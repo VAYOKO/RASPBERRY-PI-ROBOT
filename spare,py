@@ -1,0 +1,235 @@
+from picamera import PiCamera , Color
+import time
+import curses
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(3, GPIO.IN)
+
+GPIO.setup(5, GPIO.IN) 
+
+GPIO.setup(40, GPIO.OUT)     
+GPIO.setup(38, GPIO.OUT)  
+GPIO.setup(37, GPIO.OUT)   
+GPIO.setup(36, GPIO.OUT) 
+GPIO.setup(35, GPIO.OUT) 
+GPIO.setup(33, GPIO.OUT)   
+GPIO.setup(32, GPIO.OUT) 
+GPIO.setup(31, GPIO.OUT) 
+GPIO.setup(29, GPIO.OUT)   
+GPIO.setup(26, GPIO.OUT)   
+GPIO.setup(24, GPIO.OUT)   
+GPIO.setup(23, GPIO.OUT)   
+
+x = 100
+pwm40 = GPIO.PWM(40, 100) 
+
+pwm24 = GPIO.PWM(24, 100) 
+
+pwm37 = GPIO.PWM(37, 100) 
+
+pwm23 = GPIO.PWM(23, 100) 
+
+
+pwm40.start(x)
+pwm37.start(x)
+pwm24.start(x)
+pwm23.start(x)
+
+
+screen = curses.initscr()
+curses.noecho() 
+curses.cbreak()
+screen.keypad(True)
+
+
+
+try:
+        while True:   
+            char = screen.getch()
+            def forword():
+                
+            
+                  GPIO.output(38,False)
+                  GPIO.output(36,True)
+                  GPIO.output(32,False)
+                  GPIO.output(26,True)
+                  GPIO.output(29,True)
+                  GPIO.output(31,False)
+                  GPIO.output(33,True)
+                  GPIO.output(35,False)
+                  time.sleep(1)
+                  GPIO.output(38,False)
+                  GPIO.output(36,False)
+                  GPIO.output(32,False)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,False)
+                  GPIO.output(33,False)
+                  GPIO.output(35,False)
+            def blackword():
+                
+                  GPIO.output(38,True)
+                  GPIO.output(36,False)
+                  GPIO.output(32,True)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,True)
+                  GPIO.output(33,False)
+                  GPIO.output(35,True)
+                  time.sleep(1)
+                  GPIO.output(38,False)
+                  GPIO.output(36,False)
+                  GPIO.output(32,False)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,False)
+                  GPIO.output(33,False)
+                  GPIO.output(35,False)
+            def right():
+                  print("d")
+                  GPIO.output(38,True)
+                  GPIO.output(36,False)
+                  GPIO.output(32,True)
+                  GPIO.output(26,False)
+                  GPIO.output(29,True)
+                  GPIO.output(31,False)
+                  GPIO.output(33,True)
+                  GPIO.output(35,False)
+                  time.sleep(2)
+                  GPIO.output(38,False)
+                  GPIO.output(36,False)
+                  GPIO.output(32,False)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,False)
+                  GPIO.output(33,False)
+                  GPIO.output(35,False)
+            def left():
+                  GPIO.output(38,False)
+                  GPIO.output(36,True)
+                  GPIO.output(32,False)
+                  GPIO.output(26,True)
+                  GPIO.output(29,False)
+                  GPIO.output(31,True)
+                  GPIO.output(33,False)
+                  GPIO.output(35,True)
+                  time.sleep(2)
+                  GPIO.output(38,False)
+                  GPIO.output(36,False)
+                  GPIO.output(32,False)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,False)
+                  GPIO.output(33,False)
+                  GPIO.output(35,False)
+            def turnright():
+                  GPIO.output(38,True)
+                  GPIO.output(36,False)
+                  GPIO.output(32,False)
+                  GPIO.output(26,True)
+                  GPIO.output(29,True)
+                  GPIO.output(31,False)
+                  GPIO.output(33,False)
+                  GPIO.output(35,True)
+                  time.sleep(1)
+                  GPIO.output(38,False)
+                  GPIO.output(36,False)
+                  GPIO.output(32,False)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,False)
+                  GPIO.output(33,False)
+                  GPIO.output(35,False)
+            def turnleft():
+                  GPIO.output(38,False)
+                  GPIO.output(36,True)
+                  GPIO.output(32,True)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,True)
+                  GPIO.output(33,True)
+                  GPIO.output(35,False)
+                  time.sleep(1)
+                  GPIO.output(38,False)
+                  GPIO.output(36,False)
+                  GPIO.output(32,False)
+                  GPIO.output(26,False)
+                  GPIO.output(29,False)
+                  GPIO.output(31,False)
+                  GPIO.output(33,False)
+                  GPIO.output(35,False)
+                
+                
+                  
+                
+                   
+               
+                
+                
+                
+                
+                
+                
+                
+            if char == ord('o'):
+                break
+            elif char == ord('1'):
+                  x = 60
+                  pwm40.ChangeDutyCycle(x)
+                  pwm37.ChangeDutyCycle(x)
+                  pwm24.ChangeDutyCycle(x)
+                  pwm23.ChangeDutyCycle(x)
+            elif char == ord('2'):
+                  x = 70
+                  pwm40.ChangeDutyCycle(x)
+                  pwm37.ChangeDutyCycle(x)
+                  pwm24.ChangeDutyCycle(x)
+                  pwm23.ChangeDutyCycle(x)
+            elif  char == ord('3'):
+                  x = 100
+                  pwm40.ChangeDutyCycle(x)
+                  pwm37.ChangeDutyCycle(x)
+                  pwm24.ChangeDutyCycle(x)
+                  pwm23.ChangeDutyCycle(x)
+                 
+                 
+            elif char == ord('d'):
+                  right()
+                  
+                   
+            elif char == ord('a'):
+                  left()
+                  
+                  
+            elif char == ord('q'):
+                  turnleft()
+                  
+            elif char == ord('e'):
+                  turnright()
+                  
+            elif char == ord('s'):
+                  blackword()
+                  
+            elif char == ord('w'):
+                  forword()
+            while char == ord('l'):
+                   print("line fw")
+                   if GPIO.input(3) == GPIO.HIGH:
+                       turnleft()
+                       print("sn1")
+                   elif GPIO.input(5) == GPIO.HIGH:
+                       turnright()
+                       print("sn2")
+                  
+                  
+
+
+finally:
+    #Close down curses properly, inc turn echo back on!
+    curses.nocbreak(); screen.keypad(0); curses.echo()
+    curses.endwin()
+    GPIO.cleanup()
+    
+
